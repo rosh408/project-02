@@ -9,15 +9,15 @@ export default class Paddle {
       this.y = y;
       this.speed = 10;
       this.score = 0;
-      this.color = "red";
+    //   this.color = "red";
 
       document.addEventListener("keydown", event => {
         switch (event.key) {
             case up:
-              console.log("up");
+              this.up();
               break;
             case down:
-              console.log("down");
+              this.down();
               break;
           }
       });
@@ -25,15 +25,20 @@ export default class Paddle {
     }
     //..
     up() {
-        this.y = this.y - this.speed;
-        
-    }
-
-    down() {
-        this.y = this.y + this.speed;
-    }
+        // get the max number...
+        // either 0 or the y position minus speed
+        this.y = Math.max( 0, this.y - this.speed );
+      }
+    
+      down() {
+        // get the min number...
+        // either the height of the board minus the height of the paddle
+        // or the y position plus the speed
+        this.y = Math.min( this.boardHeight - this.height, this.y + this.speed );
+      }
 
     render(svg){
+        2
         let rect = document.createElementNS(SVG_NS, 'rect');
         rect.setAttributeNS(null, 'fill', 'white');
         rect.setAttributeNS(null, 'width', this.width);
