@@ -16,8 +16,8 @@ export default class Game {
     this.board = new Board(this.width, this.height);
 
     // Other code goes here...
-    this.paddleWidth = 8;
-    this.paddleHeight = 56;
+    this.paddleWidth = 10;
+    this.paddleHeight = 156;
     this.boardGap = 10;
 
     this.player1 = new Paddle(
@@ -59,9 +59,15 @@ export default class Game {
 
   render() {
 
-    if (this.pause) {
+    if (this.pause) 
+    {
+      this.player1.paddlePause = 0;
+      this.player2.paddlePause = 0;
       return;
     }
+    this.player1.paddlePause = 1;
+    this.player2.paddlePause = 1;
+
     // More code goes here....
     //add the code from the slide
     this.gameElement.innerHTML = '';
@@ -78,7 +84,7 @@ export default class Game {
     this.player2.render(svg);
 
     this.ball.render(svg, this.player1, this.player2);
-    
+
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
   }

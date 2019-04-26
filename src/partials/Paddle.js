@@ -9,9 +9,11 @@ export default class Paddle {
       this.y = y;
       this.speed = 50;
       this.score = 0;
+      this.paddlePause = 1;
     //   this.color = "red";
 
       document.addEventListener("keydown", event => {
+          if (this.paddlePause !== 0 ){
         switch (event.key) {
             case up:
               this.up();
@@ -20,6 +22,7 @@ export default class Paddle {
               this.down();
               break;
           }
+        }
       });
 
       //arrow functions dont have a this context, thatg means this is still refering to the object that we 

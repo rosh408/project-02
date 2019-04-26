@@ -5,8 +5,8 @@ export default class Ball {
         this.radius = radius;
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
-        this.direction = 1;
-        this.ping = new Audio('public/sounds/pong-01.wav');
+        this.direction = 10;
+        this.ping = new Audio('public/sounds/pong-03.wav');
         //   this.color = 'red';
         this.reset();
 
@@ -67,6 +67,7 @@ export default class Ball {
             }
         }
     }// paddleCollision
+    
 
     // add Goal method
     goal(player){
