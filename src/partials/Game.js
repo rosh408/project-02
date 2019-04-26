@@ -42,9 +42,22 @@ export default class Game {
     // constructor(radius, boardWidth, boardHeight)
     this.ball = new Ball(15, this.width, this.height);
 
+    document.addEventListener('keydown', event => {
+      console.log(event);
+      switch (event.key) {
+        case KEYS.spaceBar:
+         this.pause = !this.pause;
+        break;
+      }
+    });
+
   } // end of constructor
 
   render() {
+
+    if (this.pause) {
+      return;
+    }
     // More code goes here....
     //add the code from the slide
     this.gameElement.innerHTML = '';
