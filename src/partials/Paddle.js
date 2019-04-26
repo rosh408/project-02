@@ -22,11 +22,15 @@ export default class Paddle {
           }
       });
 
+      //arrow functions dont have a this context, thatg means this is still refering to the object that we 
+      // make when wed say const player! = new Paddle();
+
     }
     //..
     up() {
         // get the max number...
         // either 0 or the y position minus speed
+        // current y position of the paddle - 10px every time the game loop is running
         this.y = Math.max( 0, this.y - this.speed );
       }
     
