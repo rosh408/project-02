@@ -5,11 +5,10 @@ export default class Ball {
         this.radius = radius;
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
-        this.direction = 10;
+        this.direction = 7;
         this.ping = new Audio('public/sounds/pong-03.wav');
         //   this.color = 'red';
         this.reset();
-
 
     }// end of constructor
 
@@ -21,9 +20,7 @@ export default class Ball {
         while(this.vy === 0) {
             this.vy = Math.floor(Math.random() * 10 - 5);
         }
-
         this.vx = this.direction * (6 - Math.abs(this.vy));
-
     } // end of reset
 
     wallCollision() {
@@ -37,7 +34,6 @@ export default class Ball {
         } else if (hitTop || hitBottom ) {
             this.vy = -this.vy;
         }
-
     }
 
     paddleCollision(player1, player2) {
@@ -72,10 +68,8 @@ export default class Ball {
     // add Goal method
     goal(player){
         player.score++;
-        
         this.reset();
     }
-
 
     render(svg, player1, player2) {
 
@@ -86,7 +80,6 @@ export default class Ball {
         this.wallCollision();
         this.paddleCollision(player1, player2);
 
-
         let circle = document.createElementNS(SVG_NS, 'circle');
         circle.setAttributeNS(null, 'r', this.radius);
         circle.setAttributeNS(null, 'cx', this.x); // x position
@@ -94,6 +87,15 @@ export default class Ball {
         circle.setAttributeNS(null, 'fill', '#ea6a54');
         svg.appendChild(circle);
 
+        // Second Ball 
+        // let ballTwo = document.createElementNS(SVG_NS, 'circle');
+        // ballTwo.setAttributeNS(null, 'r', this.radius);
+        // ballTwo.setAttributeNS(null, 'cx', this.x); // x position
+        // ballTwo.setAttributeNS(null, 'cy', this.y); // y position
+        // ballTwo.setAttributeNS(null, 'fill', '#009b2b');
+        // svg.appendChild(ballTwo);
+
+        // goal
         const rightGoal = this.x + this.radius >= this.boardWidth;
         const leftGoal = this.x - this.radius <= 0;
     
@@ -105,7 +107,6 @@ export default class Ball {
             this.direction = -1;
         }
     }// end of render
-
 
 }// end of Ball class
 
