@@ -1,15 +1,13 @@
 import { SVG_NS } from '../settings';
 
 export default class Ball {
-    constructor(radius, boardWidth, boardHeight) {
+    constructor(radius, boardWidth, boardHeight, direction) {
         this.radius = radius;
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
-        this.direction = 7;
+        this.direction = direction;
         this.ping = new Audio('public/sounds/pong-03.wav');
-        //   this.color = 'red';
         this.reset();
-
     }// end of constructor
 
     reset() {
@@ -71,7 +69,7 @@ export default class Ball {
         this.reset();
     }
 
-    render(svg, player1, player2) {
+    render(svg, player1, player2, three) {
 
         // update x position with vector direction 60 times a second
         this.x += this.vx;
@@ -87,13 +85,14 @@ export default class Ball {
         circle.setAttributeNS(null, 'fill', '#ea6a54');
         svg.appendChild(circle);
 
-        // Second Ball 
-        // let ballTwo = document.createElementNS(SVG_NS, 'circle');
-        // ballTwo.setAttributeNS(null, 'r', this.radius);
-        // ballTwo.setAttributeNS(null, 'cx', this.x); // x position
-        // ballTwo.setAttributeNS(null, 'cy', this.y); // y position
-        // ballTwo.setAttributeNS(null, 'fill', '#009b2b');
-        // svg.appendChild(ballTwo);
+        // Third Ball 
+        // let ballThree = document.createElementNS(SVG_NS, 'circle');
+        // ballThree.setAttributeNS(null, 'r', this.radius);
+        // ballThree.setAttributeNS(null, 'cx', this.x); // x position
+        // ballThree.setAttributeNS(null, 'cy', this.y); // y position
+        // ballThree.setAttributeNS(null, 'fill', '#009b2b');
+        // ballThree.textcontent = three;
+        // svg.appendChild(ballThree);
 
         // goal
         const rightGoal = this.x + this.radius >= this.boardWidth;

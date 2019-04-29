@@ -44,17 +44,13 @@ export default class Game {
     this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
     // constructor(radius, boardWidth, boardHeight)
-    this.ball = new Ball(15, this.width, this.height);
-
-    // Second Ball
-    // this.ballTwo = new Ball(10, this.width, this.height);
-
-    //  if (this.score1 >= 2 || this.score2 >= 2 ) {
-    //   this.ballTwo.render(svg);
-    // } else {
-    // this.ball.render(svg, this.player1, this.player2);      
-    // }
+    this.ball = new Ball(20, this.width, this.height, 2);
+    this.ballTwo = new Ball(30, this.width, this.height, 2);
+    this.ballThree = new Ball(10, this.width, this.height, 2);
     
+      //Third Ball
+    this.trigger ==  false;
+
     document.addEventListener('keydown', event => {
       // console.log(event);
       switch (event.key) {
@@ -63,11 +59,18 @@ export default class Game {
         break;
       }
     });
-
   } // end of constructor
 
-  render() {
+  // triggerBall(){
+  //   if((this.player1.score > 2 || this.player2.score > 2) && this.trigger == false){
+  //     this.trigger = true;
+  //     this.ball = new Ball(20, this.width, this.height, 2);
+  //     this.ballTwo = new Ball(30, this.width, this.height, 2);
+  //     this.ballThree = new Ball(10, this.width, this.height, 2);
+  //   }
+  // }
 
+  render() {
     if (this.pause) 
     {
       this.player1.paddlePause = 0;
@@ -93,10 +96,12 @@ export default class Game {
     this.player2.render(svg);
 
     this.ball.render(svg, this.player1, this.player2);
-
-    // Second Ball
-    // this.ballTwo.render(svg);
-
+    this.ballTwo.render(svg, this.player1, this.player2);
+    // Third Ball
+    // if(this.trigger == true) {
+      this.ballThree.render(svg, this.player1, this.player2);
+    // }
+     
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
   }
