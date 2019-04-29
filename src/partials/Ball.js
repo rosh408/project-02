@@ -84,16 +84,7 @@ export default class Ball {
         circle.setAttributeNS(null, 'cy', this.y); // y position
         circle.setAttributeNS(null, 'fill', '#ea6a54');
         svg.appendChild(circle);
-
-        // Third Ball 
-        // let ballThree = document.createElementNS(SVG_NS, 'circle');
-        // ballThree.setAttributeNS(null, 'r', this.radius);
-        // ballThree.setAttributeNS(null, 'cx', this.x); // x position
-        // ballThree.setAttributeNS(null, 'cy', this.y); // y position
-        // ballThree.setAttributeNS(null, 'fill', '#009b2b');
-        // ballThree.textcontent = three;
-        // svg.appendChild(ballThree);
-
+        
         // goal
         const rightGoal = this.x + this.radius >= this.boardWidth;
         const leftGoal = this.x - this.radius <= 0;

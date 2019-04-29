@@ -30,7 +30,8 @@ A basic pong game using SVGs.
 
 methods: triggerBall(), render()
 
--
+- includes a class "Game".
+- renders all other svg from javacscript files (ball.js, paddle.js, board.js, score.js)
 
 ## Ball.js
 
@@ -44,12 +45,19 @@ methods: wallCollision(), paddleCollision(), goal(), render()
 
 methods: render()
 
+- two let variables that forms the board
+- appendChild() to bridge the svg to variable
+
 
 ## Paddle.js
 
 methods: up(), down(), coordinates(), render().
+- up and down functions used with math functions such as Math.min and Math.max
 
 
 ## Score.js
 
 methods: render()
+
+- called a let variable "text" 
+- used appendChild() to link the text of the score to svg
