@@ -21,11 +21,6 @@ export default class Board {
       line.setAttributeNS(null, 'stroke-dasharray', '20, 15');
       line.setAttributeNS(null, 'stroke-width', '4');
 
-    //   let circle = document.createAttributeNS(SVG_NS, 'circle');
-    //   circle.setAttributeNS(null, 'cx', 200);
-    //   circle.setAttributeNS(null, 'cy', 130);
-    //   circle
-
       svg.appendChild(rect);
       svg.appendChild(line);
     }

@@ -10,7 +10,6 @@ export default class Paddle {
       this.speed = 120;
       this.score = 0;
       this.paddlePause = 1;
-    //   this.color = "red";
 
       document.addEventListener("keydown", event => {
           if (this.paddlePause !== 0 ){
@@ -24,9 +23,8 @@ export default class Paddle {
           }
         }
       });
-
     }
-    //..
+
     up() {
         this.y = Math.max( 0, this.y - this.speed );
       }
