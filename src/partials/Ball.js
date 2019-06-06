@@ -51,9 +51,7 @@ export default class Ball {
         (this.y >= topY && this.y <= bottomY)
       ) {
         this.vx = -this.vx;
-        this.ping.play().catch(function() {
-         
-        });
+        this.ping.play().catch(function() {});
       } // end of if
     } else {
       let paddle = player1.coordinates(
@@ -69,9 +67,7 @@ export default class Ball {
         (this.y >= topY && this.y <= bottomY)
       ) {
         this.vx = -this.vx;
-        this.ping.play().catch(function() {
-         
-        });
+        this.ping.play().catch(function() {});
       }
     }
   } // End of paddleCollision
@@ -81,27 +77,33 @@ export default class Ball {
     player.score++;
     this.reset();
 
-    if (player.score >= 1) {
-      const appendElement = document.querySelector('body');
+    if (player.score >= 10) {
+      const appendElement = document.querySelector("body");
       const restartMessage = "Click anywhere to play another game!";
-      const declareWinnerMssg = "Congratulations&nbsp;" + name + "!" + "</br>"+ restartMessage;
+      const declareWinnerMssg =
+        "Congratulations&nbsp;" + name + "!" + "</br>" + restartMessage;
 
       appendElement.innerHTML = declareWinnerMssg;
       this.gameOver = true;
 
-      document.querySelector('body').addEventListener('click', function(event){
-          event.preventDefault();
-          window.location.reload();
-          setTimeout(function(){ 
-            const countdownMssg = 'Game starts in &nbsp;' ;
-            }, 3000);
-
+      document.querySelector("body").addEventListener("click", function(event) {
+        event.preventDefault();
+        let i = 3;
+        const countDown = setInterval(function() {
+          const countdownMssg = "Game starts in &nbsp;" + i;
+          document.querySelector("body").innerHTML = countdownMssg;
+          if (i === 0) {
+            clearInterval(countDown);
+            window.location.reload();
+          } else {
+              i--;
+          }
+        }, 1000); // End of setTimeout
       });
     }
   }
 
   render(svg, player1, player2, theGame) {
-  
     if (this.gameOver) {
       theGame.pause = true;
     }
