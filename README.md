@@ -34,7 +34,7 @@ methods: triggerBall(), render()
 
 - includes a class "Game".
 - renders all other svg from javacscript files (ball.js, paddle.js, board.js, score.js)
-![alt text](screenshots/whole-game.gif);
+![alt text](screenshots/whole-game.gif)
 
 ## Ball.js
 
