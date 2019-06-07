@@ -76,16 +76,13 @@ export default class Ball {
   goal(player, name) {
     player.score++;
     this.reset();
-
     if (player.score >= 10) {
       const appendElement = document.querySelector("body");
       const restartMessage = "Click anywhere to play another game!";
       const declareWinnerMssg =
         "Congratulations&nbsp;" + name + "!" + "</br>" + restartMessage;
-
       appendElement.innerHTML = declareWinnerMssg;
       this.gameOver = true;
-
       document.querySelector("body").addEventListener("click", function(event) {
         event.preventDefault();
         let i = 3;
@@ -107,24 +104,19 @@ export default class Ball {
     if (this.gameOver) {
       theGame.pause = true;
     }
-
     this.x += this.vx;
     this.y += this.vy;
-
     this.wallCollision();
     this.paddleCollision(player1, player2);
-
     let circle = document.createElementNS(SVG_NS, "circle");
     circle.setAttributeNS(null, "r", this.radius);
     circle.setAttributeNS(null, "cx", this.x);
     circle.setAttributeNS(null, "cy", this.y);
     circle.setAttributeNS(null, "fill", "#ea6a54");
     svg.appendChild(circle);
-
-    // Goal Section
+    
     const rightGoal = this.x + this.radius >= this.boardWidth;
     const leftGoal = this.x - this.radius <= 0;
-
     if (rightGoal) {
       this.goal(player1, "player1");
       this.direction = 1;

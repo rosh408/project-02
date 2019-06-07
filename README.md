@@ -25,6 +25,8 @@ A basic pong game using SVGs.
 **Player 2:**
 * ▲ : up
 * ▼: down
+![alt text](screenshots/up-down-key.png)
+
 
 ## Game.js
 
@@ -32,6 +34,7 @@ methods: triggerBall(), render()
 
 - includes a class "Game".
 - renders all other svg from javacscript files (ball.js, paddle.js, board.js, score.js)
+![alt text](screenshots/whole-game.gif);
 
 ## Ball.js
 
@@ -61,3 +64,15 @@ methods: render()
 
 - called a let variable "text" 
 - used appendChild() to link the text of the score to svg
+
+## Stretch Goals
+
+- under Ball.js, I used an if statement to declare the winner and as the winner is declared, an message would be appended to the document.querySelector('body').
+- this is what it looks like on Visual Studio Code
+![alt text](screenshots/declare-winner.png)
+- and this is what it looks like on the browser
+![alt text](screenshots/declare-winner-browser.png)
+- another stretch goal that I've challenged myself to create was a countdown that would render when a player clicks on the screen to play another game. I've managed to make that happen by using a setInterval() method inside of the on click event listener
+![alt text](screenshots/set-interval.png)
+- and this is what it looks like on the front end as the player clicks the screen.
+![alt text](screenshots/countdown.gif)
